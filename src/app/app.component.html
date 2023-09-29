@@ -1,0 +1,19 @@
+<div class="box">
+    <button class="btn btn-danger del" (click)="delete()">x</button>
+    <div class="slidebar">
+        <div class="preview">
+            <img onError="this.src='../assets/images/placeholder-image.png'"src="{{preview}}">
+        </div>
+        <div class="slider">
+            <div class="upload">
+                <label *ngIf="images.length < 5 " for="upload" class="btn btn-success">+</label>
+                <img *ngFor="let img of images;let index = index" (click)="display(index)"src="{{img}}" alt="ddddd">
+                <input type="file" id="upload" multiple hidden (change)="getFile($event)">
+            </div>
+        </div>
+        <div class="btn">
+            <button class="btn btn-danger" [disabled]="!preview||imageIndex === 0" (click)="prev()"> < </button>
+            <button class="btn btn-danger" [disabled]="!preview||imageIndex === (images.length -1)" (click)="next()" > > </button>
+          
+    </div>
+</div>
